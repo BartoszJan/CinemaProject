@@ -16,5 +16,7 @@ public class MovieApp {
         matrix.setDirector("Wachowsky brothers");
 
         movieDao.addMovie(matrix);
+
+        HibernateUtil.getSessionFactory().close();
     }
 }
