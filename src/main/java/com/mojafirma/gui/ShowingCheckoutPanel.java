@@ -1,6 +1,8 @@
 package com.mojafirma.gui;
 
+import com.mojafirma.model.DataPresenter;
 import com.mojafirma.model.Movie;
+import com.mojafirma.model.dao.MovieDao;
 
 import javax.swing.*;
 import javax.swing.event.ListDataListener;
@@ -18,8 +20,7 @@ public class ShowingCheckoutPanel extends JFrame {
     private JTextField textField2;
     private JTextField textField1;
 
-    List<Movie> movieList = new ArrayList<>();
-
+    DataPresenter dataPresenter = new DataPresenter();
 
     public ShowingCheckoutPanel() {
 
@@ -27,7 +28,28 @@ public class ShowingCheckoutPanel extends JFrame {
         pack();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        movieJList.setModel(new ListModel() {
 
+            @Override
+            public int getSize() {
+                return 0;
+            }
+
+            @Override
+            public Object getElementAt(int index) {
+                return 10;
+            }
+
+            @Override
+            public void addListDataListener(ListDataListener l) {
+
+            }
+
+            @Override
+            public void removeListDataListener(ListDataListener l) {
+
+            }
+        });
 
         setSize(500, 500);
         setVisible(true);

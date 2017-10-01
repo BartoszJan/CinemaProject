@@ -13,7 +13,7 @@ public class MenuPanel extends JFrame{
     }
 
     private void iniMenuPanel() {
-        setTitle("Serwis Obsługi Kina");
+        setTitle("Menu Główne");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(700, 500);
         setLocation(100, 100);
