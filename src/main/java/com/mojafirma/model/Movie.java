@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -20,7 +21,7 @@ public class Movie {
     private String title;
 
     @Column(name = "year")
-    private Date year;
+    private LocalDate year;
 
     @Column(name = "duration")
     private int duration;
@@ -44,11 +45,11 @@ public class Movie {
         this.title = title;
     }
 
-    public Date getYear() {
+    public LocalDate getYear() {
         return year;
     }
 
-    public void setYear(Date year) {
+    public void setYear(LocalDate year) {
         this.year = year;
     }
 
