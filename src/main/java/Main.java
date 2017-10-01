@@ -1,12 +1,12 @@
-import com.mojafirma.gui.GUI;
+import com.mojafirma.gui.MenuPanel;
 
 public class Main {
 
     public static void main(String[] args) {
         javax.swing.SwingUtilities.invokeLater (new Runnable() {
             public void run() {
-                GUI gui = new GUI();
-                gui.setVisible(true);
+                MenuPanel menuPanel = new MenuPanel();
+                menuPanel.setVisible(true);
             }
         });
     }

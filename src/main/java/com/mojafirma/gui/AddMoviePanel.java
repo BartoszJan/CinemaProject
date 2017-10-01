@@ -29,6 +29,7 @@ public class AddMoviePanel extends JFrame{
         setContentPane(panel1);
         pack();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocation(100, 100);
 
         panel1.setLayout(new BoxLayout(panel1, BoxLayout.PAGE_AXIS));
         panel1.add(headTextField);

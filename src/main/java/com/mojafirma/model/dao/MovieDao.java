@@ -6,6 +6,8 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import java.util.List;
+
 public class MovieDao {
 
     public Integer addMovie(Movie movie) {
@@ -24,5 +26,23 @@ public class MovieDao {
             session.close();
         }
         return movieID;
+    }
+
+    public List<Movie> getMovieList() {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = null;
+        List<Movie> movies = null;
+        try{
+            tx = session.beginTransaction();
+            movies = session.createQuery("FROM Movie").list();
+            tx.commit();
+        }catch (HibernateException e) {
+            if (tx!=null) tx.rollback();
+            e.printStackTrace();
+        }finally {
+            session.close();
+        }
+
+        return movies;
     }
 }

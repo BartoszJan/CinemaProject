@@ -74,7 +74,7 @@
         </constraints>
         <properties>
           <font name="Consolas" size="14" style="0"/>
-          <toolTipText value="Podaj Datę Produkcji"/>
+          <toolTipText value="Podaj Datę Produkcji (format&quot;rrrr-mm-dd&quot;)"/>
         </properties>
       </component>
       <component id="b90d4" class="javax.swing.JTextField" binding="textField5" default-binding="true">
@@ -97,7 +97,7 @@
         </constraints>
         <properties>
           <font name="Consolas" size="14" style="0"/>
-          <toolTipText value="Podaj Czas Trwania"/>
+          <toolTipText value="Podaj Czas Trwania (w minutach)"/>
         </properties>
       </component>
       <component id="5d8d9" class="javax.swing.JTextField" binding="textField7" default-binding="true">
