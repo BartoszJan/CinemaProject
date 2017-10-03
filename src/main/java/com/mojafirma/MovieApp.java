@@ -9,7 +9,9 @@ import java.time.LocalDate;
 public class MovieApp {
 
     public static void main(String[] args) {
+
         MovieDao movieDao = new MovieDao();
+
         Movie matrix = new Movie();
         matrix.setTitle("Matrix");
         matrix.setDuration(120);

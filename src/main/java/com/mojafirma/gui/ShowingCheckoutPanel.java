@@ -20,7 +20,6 @@ public class ShowingCheckoutPanel extends JFrame {
     private JTextField textField2;
     private JTextField textField1;
 
-    DataPresenter dataPresenter = new DataPresenter();
 
     public ShowingCheckoutPanel() {
 
@@ -28,16 +27,18 @@ public class ShowingCheckoutPanel extends JFrame {
         pack();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        movieJList.setModel(new ListModel() {
+        DataPresenter dataPresenter = new DataPresenter();
+        int size = dataPresenter.movieListSize();
 
+        movieJList.setModel(new ListModel() {
             @Override
             public int getSize() {
-                return 0;
+                return size;
             }
 
             @Override
             public Object getElementAt(int index) {
-                return 10;
+                return 0;
             }
 
             @Override
