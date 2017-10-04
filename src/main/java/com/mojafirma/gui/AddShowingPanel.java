@@ -43,14 +43,14 @@ public class AddShowingPanel extends JFrame{
         button1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String movietitle = movieTitleInput.getText();
+
                 LocalDateTime diteTimeShowing = LocalDateTime.parse(dateTimeInput.getText(), DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
                 int roomNumber = Integer.parseInt(roomNumberInput.getText());
 
+                Movie movie = (Movie) chooseMovieComboBox.getSelectedItem();
                 ShowingDao showingDao = new ShowingDao();
                 Showing showing = new Showing();
-                MovieDao movieDao = new MovieDao();
-                showing.setMovie(movieDao.getMovie(null));
+                showing.setMovie(movie);
                 showing.setMovie_date_time(diteTimeShowing);
                 showing.setRoom_number(roomNumber);
                 showingDao.addShowing(showing);
