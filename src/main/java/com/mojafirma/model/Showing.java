@@ -1,12 +1,7 @@
 package com.mojafirma.model;
 
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
@@ -17,8 +12,9 @@ public class Showing {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int showing_id;
 
-    @Column(name = "movie_title")
-    private String movie_title;
+    @ManyToOne
+    @JoinColumn(name = "movie_id", nullable=false)
+    private Movie movie;
 
     @Column(name = "movie_date_time")
     private LocalDateTime movie_date_time;
@@ -34,12 +30,12 @@ public class Showing {
         this.showing_id = showing_id;
     }
 
-    public String getMovie_title() {
-        return movie_title;
+    public Movie getMovie() {
+        return movie;
     }
 
-    public void setMovie_title(String movie_title) {
-        this.movie_title = movie_title;
+    public void setMovie(Movie movie) {
+        this.movie = movie;
     }
 
     public LocalDateTime getMovie_date_time() {
@@ -61,8 +57,8 @@ public class Showing {
     @Override
     public String toString() {
         return "Showing{" +
-                "showing_id='" + showing_id + '\'' +
-                ", movie_title='" + movie_title + '\'' +
+                "showing_id=" + showing_id +
+                ", movie=" + movie +
                 ", movie_date_time=" + movie_date_time +
                 ", room_number=" + room_number +
                 '}';

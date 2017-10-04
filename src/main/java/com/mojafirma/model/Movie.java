@@ -1,13 +1,8 @@
 package com.mojafirma.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table( name = "movie" )
@@ -16,6 +11,11 @@ public class Movie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int movie_id;
+
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL,
+            mappedBy = "movie", orphanRemoval = true)
+    @Column(name = "SHOWING", nullable = false)
+    private List<Showing> showings;
 
     @Column(name = "title")
     private String title;
@@ -35,6 +35,10 @@ public class Movie {
 
     public void setMovie_id(int movie_id) {
         this.movie_id = movie_id;
+    }
+
+    public List<Showing> getShowings() {
+        return showings;
     }
 
     public String getTitle() {

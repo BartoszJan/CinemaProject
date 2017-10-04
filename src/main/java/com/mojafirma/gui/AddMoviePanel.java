@@ -1,6 +1,6 @@
 package com.mojafirma.gui;
 
-import com.mojafirma.HibernateUtil;
+import com.mojafirma.util.HibernateUtil;
 import com.mojafirma.model.Movie;
 import com.mojafirma.model.dao.MovieDao;
 

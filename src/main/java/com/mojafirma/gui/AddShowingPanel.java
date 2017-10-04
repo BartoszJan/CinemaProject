@@ -1,6 +1,7 @@
 package com.mojafirma.gui;
 
-import com.mojafirma.HibernateUtil;
+import com.mojafirma.model.dao.MovieDao;
+import com.mojafirma.util.HibernateUtil;
 import com.mojafirma.model.Showing;
 import com.mojafirma.model.dao.ShowingDao;
 
@@ -48,7 +49,8 @@ public class AddShowingPanel extends JFrame{
 
                 ShowingDao showingDao = new ShowingDao();
                 Showing showing = new Showing();
-                showing.setMovie_title(movietitle);
+                MovieDao movieDao = new MovieDao();
+                showing.setMovie(movieDao.getMovie(null));
                 showing.setMovie_date_time(diteTimeShowing);
                 showing.setRoom_number(roomNumber);
                 showingDao.addShowing(showing);

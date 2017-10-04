@@ -1,16 +1,20 @@
 package com.mojafirma.gui;
 
+import com.mojafirma.presenter.MoviePresenter;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-/**
- * Created by RENT on 2017-10-01.
- */
 public class ClientPanel extends JFrame{
 
+    ShowingCheckoutPanel showingCheckoutPanel;
+    MoviePresenter moviePresenter;
+
     public ClientPanel() throws HeadlessException {
+        showingCheckoutPanel = new ShowingCheckoutPanel();
+        moviePresenter = new MoviePresenter(showingCheckoutPanel);
         iniClientPanel();
     }
 
@@ -44,7 +48,11 @@ public class ClientPanel extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
-                ShowingCheckoutPanel showingCheckoutPanel = new ShowingCheckoutPanel();
+                showingCheckoutPanel.iniShowingCheckoutPanel();
+                moviePresenter.showMovie(1);
+                moviePresenter.showMovieList();
+                showingCheckoutPanel.setSize(700, 500);
+                showingCheckoutPanel.setLocation(100, 100);
             }
         });
 

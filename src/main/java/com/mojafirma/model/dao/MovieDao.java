@@ -1,6 +1,6 @@
 package com.mojafirma.model.dao;
 
-import com.mojafirma.HibernateUtil;
+import com.mojafirma.util.HibernateUtil;
 import com.mojafirma.model.Movie;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -26,6 +26,24 @@ public class MovieDao {
             session.close();
         }
         return movieID;
+    }
+
+    public Movie getMovie(Integer movieId) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = null;
+        Movie movie = null;
+        try{
+            tx = session.beginTransaction();
+            movie = session.get(Movie.class, movieId);
+            tx.commit();
+        }catch (HibernateException e) {
+            if (tx!=null) tx.rollback();
+            e.printStackTrace();
+        }finally {
+            session.close();
+        }
+
+        return movie;
     }
 
     public List<Movie> getMovieList() {

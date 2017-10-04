@@ -1,4 +1,4 @@
-package com.mojafirma;
+package com.mojafirma.util;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;

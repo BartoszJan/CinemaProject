@@ -2,8 +2,8 @@ package com.mojafirma;
 
 import com.mojafirma.model.Movie;
 import com.mojafirma.model.dao.MovieDao;
+import com.mojafirma.util.HibernateUtil;
 
-import java.sql.Date;
 import java.time.LocalDate;
 
 public class MovieApp {
