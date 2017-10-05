@@ -2,7 +2,6 @@ package com.mojafirma.gui;
 
 import com.mojafirma.model.Movie;
 import com.mojafirma.model.Showing;
-import com.mojafirma.presenter.MoviePresenter;
 import com.mojafirma.util.MovieListModel;
 
 import javax.swing.*;

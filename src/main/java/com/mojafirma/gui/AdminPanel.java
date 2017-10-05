@@ -1,16 +1,20 @@
 package com.mojafirma.gui;
 
+import com.mojafirma.presenter.AddShowingPresenter;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-/**
- * Created by RENT on 2017-10-01.
- */
 public class AdminPanel extends JFrame {
 
+    AddShowingPanel addShowingPanel;
+    AddShowingPresenter addShowingPresenter;
+
     public AdminPanel() throws HeadlessException {
+        addShowingPanel = new AddShowingPanel();
+        addShowingPresenter = new AddShowingPresenter(addShowingPanel);
         iniAdminPanel();
     }
 
@@ -45,7 +49,7 @@ public class AdminPanel extends JFrame {
         @Override
         public void actionPerformed(ActionEvent e) {
             dispose();
-            AddMoviePanel moviePanel = new AddMoviePanel();
+            AddMoviePanel addMoviePanel = new AddMoviePanel();
         }
     });
 
@@ -53,7 +57,8 @@ public class AdminPanel extends JFrame {
         @Override
         public void actionPerformed(ActionEvent e) {
             dispose();
-            AddShowingPanel addShowingPanel = new AddShowingPanel();
+           addShowingPanel.iniAddShowingPanel();
+           addShowingPresenter.showMovieList();
         }
     });
 }

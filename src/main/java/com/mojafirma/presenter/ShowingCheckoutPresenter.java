@@ -7,12 +7,12 @@ import com.mojafirma.model.dao.ShowingDao;
 
 import java.util.List;
 
-public class MoviePresenter {
+public class ShowingCheckoutPresenter {
 
     private MovieDao movieDao = new MovieDao();
     ShowingCheckoutPanel showingCheckoutPanel = new ShowingCheckoutPanel();
 
-    public MoviePresenter(ShowingCheckoutPanel showingCheckoutPanel) {
+    public ShowingCheckoutPresenter(ShowingCheckoutPanel showingCheckoutPanel) {
         this.showingCheckoutPanel = showingCheckoutPanel;
     }
 

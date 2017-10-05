@@ -1,6 +1,6 @@
 package com.mojafirma.gui;
 
-import com.mojafirma.presenter.MoviePresenter;
+import com.mojafirma.presenter.ShowingCheckoutPresenter;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,11 +10,11 @@ import java.awt.event.ActionListener;
 public class ClientPanel extends JFrame{
 
     ShowingCheckoutPanel showingCheckoutPanel;
-    MoviePresenter moviePresenter;
+    ShowingCheckoutPresenter moviePresenter;
 
     public ClientPanel() throws HeadlessException {
         showingCheckoutPanel = new ShowingCheckoutPanel();
-        moviePresenter = new MoviePresenter(showingCheckoutPanel);
+        moviePresenter = new ShowingCheckoutPresenter(showingCheckoutPanel);
         iniClientPanel();
     }
 

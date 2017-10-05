@@ -22,4 +22,5 @@ public class MovieComboBoxModel extends DefaultComboBoxModel<Movie>{
     public Movie getElementAt(int index) {
         return movies.get(index);
     }
+
 }
