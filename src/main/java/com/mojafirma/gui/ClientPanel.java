@@ -1,6 +1,7 @@
 package com.mojafirma.gui;
 
 import com.mojafirma.presenter.ShowingCheckoutPresenter;
+import com.mojafirma.presenter.TicketReservationPresenter;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,10 +12,14 @@ public class ClientPanel extends JFrame{
 
     ShowingCheckoutPanel showingCheckoutPanel;
     ShowingCheckoutPresenter moviePresenter;
+    TicketReservationPanel ticketReservationPanel;
+    TicketReservationPresenter ticketReservationPresenter;
 
     public ClientPanel() throws HeadlessException {
         showingCheckoutPanel = new ShowingCheckoutPanel();
         moviePresenter = new ShowingCheckoutPresenter(showingCheckoutPanel);
+        ticketReservationPanel = new TicketReservationPanel();
+        ticketReservationPresenter = new TicketReservationPresenter(ticketReservationPanel);
         iniClientPanel();
     }
 
@@ -60,7 +65,9 @@ public class ClientPanel extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
-
+                ticketReservationPanel.iniTicketReservationPanel();
+                ticketReservationPresenter.showMovieList();
+                ticketReservationPresenter.showShowingsList(1);
             }
         });
     }

@@ -31,18 +31,6 @@ public class AddMoviePanel extends JFrame{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocation(100, 100);
 
-        panel1.setLayout(new BoxLayout(panel1, BoxLayout.PAGE_AXIS));
-        panel1.add(headTextField);
-        panel1.add(textField1);
-        panel1.add(movieTitleInput);
-        panel1.add(textField3);
-        panel1.add(yearInput);
-        panel1.add(textField5);
-        panel1.add(durationInput);
-        panel1.add(textField7);
-        panel1.add(directorInput);
-        panel1.add(button1);
-
         button1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
