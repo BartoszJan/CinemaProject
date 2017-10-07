@@ -1,7 +1,6 @@
 package com.mojafirma;
 
 
-import com.mojafirma.model.Showing;
 import com.mojafirma.model.Ticket;
 import com.mojafirma.model.dao.ShowingDao;
 import com.mojafirma.model.dao.TicketDao;

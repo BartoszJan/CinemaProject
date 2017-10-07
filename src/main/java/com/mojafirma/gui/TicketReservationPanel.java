@@ -2,8 +2,12 @@ package com.mojafirma.gui;
 
 import com.mojafirma.model.Movie;
 import com.mojafirma.model.Showing;
+import com.mojafirma.model.Ticket;
+import com.mojafirma.model.dao.TicketDao;
 import com.mojafirma.util.MovieComboBoxModel;
 import com.mojafirma.util.ShowingListModel;
+import javafx.scene.control.Control;
+import javafx.scene.control.RadioButton;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
@@ -13,7 +17,10 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.ResourceBundle;
 
 
 public class TicketReservationPanel extends JFrame {
@@ -136,11 +143,43 @@ public class TicketReservationPanel extends JFrame {
             }
         });
 
+        TicketDao ticketDao = new TicketDao();
+        Ticket ticket = new Ticket();
+
         showingsList.addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
                 JList<Showing> showingsList = (JList<Showing>) e.getSource();
                 Showing selectedShowing = showingsList.getSelectedValue();
+                ticket.setShowing(selectedShowing);
+            }
+        });
+
+        ArrayList<JRadioButton> allRadioButtons = new ArrayList<>();
+        for (int i = 0; i < panel2.getComponents().length; i++) {
+            allRadioButtons.add((JRadioButton) panel2.getComponents()[i]);
+        }
+
+        ButtonGroup seats = new ButtonGroup();
+
+        for (int i = 0; i < allRadioButtons.size(); i++) {
+            seats.add(allRadioButtons.get(i));
+        }
+
+        int index = 0;
+        for (int i = 0; i < allRadioButtons.size(); i++) {
+            if (allRadioButtons.get(i).isSelected()) {
+
+                break;
+            }
+        }
+
+        bookTicketButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ticket.setUser_name(userNameTextField.getText());
+                ticket.setUser_last_name(userLastNameTextField.getText());
+
             }
         });
 
