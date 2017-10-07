@@ -67,7 +67,6 @@ public class ClientPanel extends JFrame{
                 dispose();
                 ticketReservationPanel.iniTicketReservationPanel();
                 ticketReservationPresenter.showMovieList();
-                ticketReservationPresenter.showShowingsList(1);
             }
         });
     }

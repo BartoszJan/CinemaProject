@@ -13,9 +13,9 @@ public class MovieApp {
         MovieDao movieDao = new MovieDao();
 
         Movie matrix = new Movie();
-        matrix.setTitle("Matrix");
-        matrix.setDuration(120);
-        matrix.setYear(LocalDate.of(1990, 01, 01));
+        matrix.setTitle("Memento");
+        matrix.setDuration(150);
+        matrix.setYear(LocalDate.of(2000, 01, 01));
         matrix.setDirector("Wachowsky brothers");
 
         movieDao.addMovie(matrix);

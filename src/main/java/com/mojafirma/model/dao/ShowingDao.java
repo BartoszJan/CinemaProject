@@ -1,5 +1,6 @@
 package com.mojafirma.model.dao;
 
+import com.mojafirma.model.Movie;
 import com.mojafirma.util.HibernateUtil;
 import com.mojafirma.model.Showing;
 import org.hibernate.HibernateException;
@@ -24,5 +25,23 @@ public class ShowingDao {
             session.close();
         }
         return showingID;
+    }
+
+    public Showing getShowing(Integer showingId) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = null;
+        Showing showing = null;
+        try{
+            tx = session.beginTransaction();
+            showing = session.get(Showing.class, showingId);
+            tx.commit();
+        }catch (HibernateException e) {
+            if (tx!=null) tx.rollback();
+            e.printStackTrace();
+        }finally {
+            session.close();
+        }
+
+        return showing;
     }
 }

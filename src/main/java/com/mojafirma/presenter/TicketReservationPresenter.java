@@ -24,10 +24,4 @@ public class TicketReservationPresenter {
         List<Movie> movies = movieDao.getMovieList();
         ticketReservationPanel.setMovieList(movies);
     }
-
-    public void showShowingsList(Integer movieID) {
-        Movie movie = movieDao.getMovie(movieID);
-        List<Showing> showings = movie.getShowings();
-        ticketReservationPanel.setShowingsList(showings);
-    }
 }

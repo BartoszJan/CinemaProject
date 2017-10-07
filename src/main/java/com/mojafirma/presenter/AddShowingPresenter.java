@@ -6,7 +6,6 @@ import com.mojafirma.model.dao.MovieDao;
 
 import java.util.List;
 
-
 public class AddShowingPresenter {
 
     private MovieDao movieDao = new MovieDao();

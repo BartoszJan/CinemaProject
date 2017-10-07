@@ -1,6 +1,5 @@
 package com.mojafirma;
 
-import com.mojafirma.model.Movie;
 import com.mojafirma.model.Showing;
 import com.mojafirma.model.dao.MovieDao;
 import com.mojafirma.model.dao.ShowingDao;
@@ -16,8 +15,8 @@ public class ShowingApp {
         MovieDao movieDao = new MovieDao();
         Showing matrixShowing = new Showing();
         matrixShowing.setMovie(movieDao.getMovie(2));
-        matrixShowing.setMovie_date_time(LocalDateTime.of(2017, 10, 20, 18, 00));
-        matrixShowing.setRoom_number(3);
+        matrixShowing.setMovie_date_time(LocalDateTime.of(2017, 10, 16, 21, 15));
+        matrixShowing.setRoom_number(1);
 
         showingDao.addShowing(matrixShowing);
         HibernateUtil.getSessionFactory().close();

@@ -3,6 +3,7 @@ package com.mojafirma.model;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "showing")
@@ -21,6 +22,11 @@ public class Showing {
 
     @Column(name = "room_number")
     private int room_number;
+
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL,
+            mappedBy = "showing", orphanRemoval = true)
+    @Column(name = "TICKET", nullable = false)
+    private List<Ticket> tickets;
 
     public int getShowing_id() {
         return showing_id;

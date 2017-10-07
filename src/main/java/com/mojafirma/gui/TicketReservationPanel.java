@@ -6,8 +6,13 @@ import com.mojafirma.util.MovieComboBoxModel;
 import com.mojafirma.util.ShowingListModel;
 
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.plaf.basic.BasicComboBoxRenderer;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 
@@ -72,12 +77,14 @@ public class TicketReservationPanel extends JFrame {
     private JPanel panel1;
     private JPanel panel2;
     private JPanel panel3;
+    private JTextField userNameTextField;
+    private JTextField userLastNameTextField;
+    private JTextField textField7;
+    private JTextField textField8;
 
     public void setMovieList(List<Movie> movies) {
         movieChooserBox.setModel(new MovieComboBoxModel(movies));
     }
-
-    public void setShowingsList(List<Showing> showings) {showingsList.setModel(new ShowingListModel(showings));}
 
     public void iniTicketReservationPanel() {
 
@@ -86,18 +93,59 @@ public class TicketReservationPanel extends JFrame {
         setTitle("Rezerwacja biletów");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-     movieChooserBox.setRenderer(new BasicComboBoxRenderer(){
-        public Component getListCellRendererComponent(JList list, Object value, int index,              boolean isSelected, boolean cellHasFocus){
-            super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
-            if (value != null){
-                Movie movie = (Movie) value;
-                setText(movie.getTitle());
-            }
-            return this;
+        movieChooserBox.setRenderer(new BasicComboBoxRenderer(){
+            public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus){
+                super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+                if (value != null){
+                    Movie movie = (Movie) value;
+                    setText(movie.getTitle());
+                }
+                return this;
         }
     });
 
+        movieChooserBox.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Movie movie = (Movie)movieChooserBox.getSelectedItem();
+                showingsList.setModel(new ShowingListModel(movie.getShowings()));
+            }
+        });
+
+
+        showingsList.setCellRenderer(new ListCellRenderer<Showing>() {
+            @Override
+            public Component getListCellRendererComponent(JList<? extends Showing> list, Showing value, int index, boolean isSelected, boolean cellHasFocus) {
+                JLabel listItem = new JLabel(value.getMovie_date_time().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss")).toString() + " Nr sali: " + value.getRoom_number());
+                listItem.setOpaque(true);
+                if (isSelected)
+
+                {
+                    listItem.setBackground(list.getSelectionBackground());
+                    listItem.setForeground(list.getSelectionForeground());
+                }
+                else
+                {
+                    listItem.setBackground(list.getBackground());
+                    listItem.setForeground(list.getForeground());
+                }
+                listItem.setFont(list.getFont());
+                listItem.setEnabled(list.isEnabled());
+                listItem.setMinimumSize(new Dimension(100, 20));
+                return listItem;
+            }
+        });
+
+        showingsList.addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                JList<Showing> showingsList = (JList<Showing>) e.getSource();
+                Showing selectedShowing = showingsList.getSelectedValue();
+            }
+        });
+
         setLocation(100, 100);
+        setSize(700,400);
         setVisible(true);
     }
 }
