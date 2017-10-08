@@ -175,7 +175,9 @@
               </component>
               <component id="856d2" class="javax.swing.JRadioButton" binding="a43RadioButton">
                 <constraints>
-                  <grid row="3" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <grid row="3" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                    <preferred-size width="32" height="28"/>
+                  </grid>
                 </constraints>
                 <properties>
                   <text value="43"/>
@@ -207,7 +209,9 @@
               </component>
               <component id="77745" class="javax.swing.JRadioButton" binding="a63RadioButton">
                 <constraints>
-                  <grid row="5" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <grid row="5" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                    <preferred-size width="32" height="28"/>
+                  </grid>
                 </constraints>
                 <properties>
                   <text value="63"/>
@@ -215,7 +219,9 @@
               </component>
               <component id="2afaf" class="javax.swing.JRadioButton" binding="a53RadioButton">
                 <constraints>
-                  <grid row="4" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <grid row="4" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                    <preferred-size width="32" height="28"/>
+                  </grid>
                 </constraints>
                 <properties>
                   <text value="53"/>
@@ -223,7 +229,9 @@
               </component>
               <component id="b57f7" class="javax.swing.JRadioButton" binding="a33RadioButton">
                 <constraints>
-                  <grid row="2" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <grid row="2" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                    <preferred-size width="32" height="28"/>
+                  </grid>
                 </constraints>
                 <properties>
                   <text value="33"/>
@@ -271,7 +279,9 @@
               </component>
               <component id="3d562" class="javax.swing.JRadioButton" binding="a23RadioButton">
                 <constraints>
-                  <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                    <preferred-size width="32" height="28"/>
+                  </grid>
                 </constraints>
                 <properties>
                   <text value="23"/>
@@ -384,7 +394,9 @@
               </component>
               <component id="c812c" class="javax.swing.JRadioButton" binding="a14RadioButton">
                 <constraints>
-                  <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                    <preferred-size width="32" height="28"/>
+                  </grid>
                 </constraints>
                 <properties>
                   <text value="14"/>

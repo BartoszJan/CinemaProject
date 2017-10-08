@@ -100,25 +100,26 @@ public class TicketReservationPanel extends JFrame {
         setTitle("Rezerwacja biletów");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        movieChooserBox.setRenderer(new BasicComboBoxRenderer(){
-            public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus){
+        movieChooserBox.setRenderer(new BasicComboBoxRenderer() {
+            public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
                 super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
-                if (value != null){
+                if (value != null) {
                     Movie movie = (Movie) value;
                     setText(movie.getTitle());
                 }
                 return this;
-        }
-    });
+            }
+        });
 
         movieChooserBox.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Movie movie = (Movie)movieChooserBox.getSelectedItem();
-                showingsList.setModel(new ShowingListModel(movie.getShowings()));
+                Movie movie = (Movie) movieChooserBox.getSelectedItem();
+                if (!showingsList.getValueIsAdjusting()) {
+                    showingsList.setModel(new ShowingListModel(movie.getShowings()));
+                }
             }
         });
-
 
         showingsList.setCellRenderer(new ListCellRenderer<Showing>() {
             @Override
@@ -130,9 +131,7 @@ public class TicketReservationPanel extends JFrame {
                 {
                     listItem.setBackground(list.getSelectionBackground());
                     listItem.setForeground(list.getSelectionForeground());
-                }
-                else
-                {
+                } else {
                     listItem.setBackground(list.getBackground());
                     listItem.setForeground(list.getForeground());
                 }
@@ -140,18 +139,6 @@ public class TicketReservationPanel extends JFrame {
                 listItem.setEnabled(list.isEnabled());
                 listItem.setMinimumSize(new Dimension(100, 20));
                 return listItem;
-            }
-        });
-
-        TicketDao ticketDao = new TicketDao();
-        Ticket ticket = new Ticket();
-
-        showingsList.addListSelectionListener(new ListSelectionListener() {
-            @Override
-            public void valueChanged(ListSelectionEvent e) {
-                JList<Showing> showingsList = (JList<Showing>) e.getSource();
-                Showing selectedShowing = showingsList.getSelectedValue();
-                ticket.setShowing(selectedShowing);
             }
         });
 
@@ -166,13 +153,39 @@ public class TicketReservationPanel extends JFrame {
             seats.add(allRadioButtons.get(i));
         }
 
-        int index = 0;
-        for (int i = 0; i < allRadioButtons.size(); i++) {
-            if (allRadioButtons.get(i).isSelected()) {
+        TicketDao ticketDao = new TicketDao();
+        Ticket ticket = new Ticket();
 
-                break;
+        showingsList.addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+
+                JList<Showing> showingsList = (JList<Showing>) e.getSource();
+
+                Showing selectedShowing = showingsList.getSelectedValue();
+                ticket.setShowing(selectedShowing);
+
+                if (!e.getValueIsAdjusting() && !showingsList.isSelectionEmpty()) {
+
+                    List<Ticket> bookedTickets = selectedShowing.getTickets();
+
+                    for (int i = 0; i < allRadioButtons.size(); i++) {
+                        allRadioButtons.get(i).setEnabled(true);
+                        allRadioButtons.get(i).setBackground(new Color(232, 232, 232));
+                        allRadioButtons.get(i).setSelected(false);
+                    }
+
+                    for (int i = 0; i < bookedTickets.size(); i++) {
+                        for (int j = 0; j < allRadioButtons.size(); j++) {
+                            if (bookedTickets.get(i).getSeat() == Integer.parseInt(allRadioButtons.get(j).getText())) {
+                                allRadioButtons.get(j).setEnabled(false);
+                                allRadioButtons.get(j).setBackground(Color.RED);
+                            }
+                        }
+                    }
+                }
             }
-        }
+        });
 
         bookTicketButton.addActionListener(new ActionListener() {
             @Override
@@ -180,11 +193,18 @@ public class TicketReservationPanel extends JFrame {
                 ticket.setUser_name(userNameTextField.getText());
                 ticket.setUser_last_name(userLastNameTextField.getText());
 
+                for (int i = 0; i < allRadioButtons.size(); i++) {
+                    if (allRadioButtons.get(i).isSelected()) {
+                        ticket.setSeat(Integer.parseInt(allRadioButtons.get(i).getText()));
+                        break;
+                    }
+                }
+                ticketDao.addTicket(ticket);
             }
         });
 
         setLocation(100, 100);
-        setSize(700,400);
+        setSize(700, 400);
         setVisible(true);
     }
 }
