@@ -22,4 +22,8 @@ public class MoviePresenter {
         List<Movie> allMovies = movieDao.getMovieList();
         movieView.setMovieList(allMovies);
     }
+
+    public void addMovie() {
+    movieDao.addMovie(movieView.getAddingMovie());
+    }
 }

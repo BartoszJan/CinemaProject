@@ -1,6 +1,10 @@
 package com.mojafirma.gui;
 
 import com.mojafirma.model.Movie;
+import com.mojafirma.presenter.MoviePresenter;
+import com.mojafirma.presenter.ShowingPresenter;
+import com.mojafirma.presenter.view.MovieView;
+import com.mojafirma.presenter.view.ShowingView;
 import com.mojafirma.util.HibernateUtil;
 import com.mojafirma.model.Showing;
 import com.mojafirma.model.dao.ShowingDao;
@@ -27,16 +31,22 @@ public class AddShowingPanel extends JFrame {
     private JTextField textField1;
     private JComboBox chooseMovieComboBox;
 
-    public void setMovieList(List<Movie> movies) {
-        chooseMovieComboBox.setModel(new MovieComboBoxModel(movies));
-    }
+    public AddShowingPanel(){ iniAddShowingPanel(); }
 
-    public void iniAddShowingPanel() {
+    MovieView movieView = new MovieView();
+    MoviePresenter moviePresenter = new MoviePresenter(movieView);
+    ShowingView showingView = new ShowingView();
+    ShowingPresenter showingPresenter = new ShowingPresenter(showingView);
+
+    private void iniAddShowingPanel() {
 
         setContentPane(panel1);
         pack();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        moviePresenter.showMovieList();
+
+        chooseMovieComboBox.setModel(new MovieComboBoxModel(movieView.getMovieList()));
         chooseMovieComboBox.setRenderer(new BasicComboBoxRenderer(){
             public Component getListCellRendererComponent(JList list, Object value, int index,              boolean isSelected, boolean cellHasFocus){
                 super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
@@ -52,17 +62,14 @@ public class AddShowingPanel extends JFrame {
                     @Override
                     public void actionPerformed(ActionEvent e) {
 
-                        LocalDateTime diteTimeShowing = LocalDateTime.parse(dateTimeInput.getText(), DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+                        LocalDateTime dateTimeShowing = LocalDateTime.parse(dateTimeInput.getText(), DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
                         int roomNumber = Integer.parseInt(roomNumberInput.getText());
 
                         Movie movie = (Movie) chooseMovieComboBox.getSelectedItem();
-                        ShowingDao showingDao = new ShowingDao();
-                        Showing showing = new Showing();
-                        showing.setMovie(movie);
-                        showing.setMovie_date_time(diteTimeShowing);
-                        showing.setRoom_number(roomNumber);
-                        showingDao.addShowing(showing);
-                        HibernateUtil.getSessionFactory().close();
+                        showingView.setMovieAddingShowing(movie);
+                        showingView.setDateTimeAddingShowing(dateTimeShowing);
+                        showingView.setRoomAddingShwoing(roomNumber);
+                        showingPresenter.addShowing();
                     }
                 });
 

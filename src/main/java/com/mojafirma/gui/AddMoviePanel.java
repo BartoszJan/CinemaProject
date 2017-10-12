@@ -1,8 +1,7 @@
 package com.mojafirma.gui;
 
-import com.mojafirma.util.HibernateUtil;
-import com.mojafirma.model.Movie;
-import com.mojafirma.model.dao.MovieDao;
+import com.mojafirma.presenter.MoviePresenter;
+import com.mojafirma.presenter.view.MovieView;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -24,7 +23,12 @@ public class AddMoviePanel extends JFrame{
     private JTextField directorInput;
     private JButton button1;
 
-    public AddMoviePanel() {
+    public AddMoviePanel() { iniAddMoviePanel(); }
+
+    MovieView movieView = new MovieView();
+    MoviePresenter moviePresenter = new MoviePresenter(movieView);
+
+    private void iniAddMoviePanel() {
 
         setContentPane(panel1);
         pack();
@@ -35,19 +39,16 @@ public class AddMoviePanel extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                String movietitle = movieTitleInput.getText();
+                String movieTitle = movieTitleInput.getText();
                 LocalDate yearMovie = LocalDate.parse(yearInput.getText(), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
                 int duration = Integer.parseInt(durationInput.getText());
                 String director = directorInput.getText();
 
-                MovieDao movieDao = new MovieDao();
-                Movie movie = new Movie();
-                movie.setTitle(movietitle);
-                movie.setYear(yearMovie);
-                movie.setDuration(duration);
-                movie.setDirector(director);
-                movieDao.addMovie(movie);
-                HibernateUtil.getSessionFactory().close();
+                movieView.setTitleAddingMovie(movieTitle);
+                movieView.setYearAddingMovie(yearMovie);
+                movieView.setDurationAddingMovie(duration);
+                movieView.setDirectorAddingMovie(director);
+                moviePresenter.addMovie();
             }
         });
 

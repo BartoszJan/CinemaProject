@@ -1,6 +1,5 @@
 package com.mojafirma.presenter;
 
-import com.mojafirma.model.Ticket;
 import com.mojafirma.model.dao.TicketDao;
 import com.mojafirma.presenter.view.TicketView;
 

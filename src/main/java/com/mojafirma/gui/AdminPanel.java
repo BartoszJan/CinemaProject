@@ -1,7 +1,5 @@
 package com.mojafirma.gui;
 
-import com.mojafirma.presenter.AddShowingPresenter;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -9,12 +7,8 @@ import java.awt.event.ActionListener;
 
 public class AdminPanel extends JFrame {
 
-    AddShowingPanel addShowingPanel;
-    AddShowingPresenter addShowingPresenter;
 
     public AdminPanel() throws HeadlessException {
-        addShowingPanel = new AddShowingPanel();
-        addShowingPresenter = new AddShowingPresenter(addShowingPanel);
         iniAdminPanel();
     }
 
@@ -57,8 +51,7 @@ public class AdminPanel extends JFrame {
         @Override
         public void actionPerformed(ActionEvent e) {
             dispose();
-           addShowingPanel.iniAddShowingPanel();
-           addShowingPresenter.showMovieList();
+           AddShowingPanel addShowingPanel = new AddShowingPanel();
         }
     });
 }
