@@ -1,16 +1,15 @@
 package com.mojafirma.gui;
 
 import com.mojafirma.model.Movie;
-import com.mojafirma.model.Showing;
+import com.mojafirma.presenter.MoviePresenter;
+import com.mojafirma.presenter.view.MovieView;
 import com.mojafirma.util.MovieListModel;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.*;
-import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
 
 public class ShowingCheckoutPanel extends JFrame {
     private JPanel panel1;
@@ -26,30 +25,19 @@ public class ShowingCheckoutPanel extends JFrame {
     private JTextField textField7;
     private JTextField director;
 
-    public void setMovieYear(LocalDate yearText) {
-        year.setText("");
-    }
+    public ShowingCheckoutPanel() { iniShowingCheckoutPanel(); }
 
-    public void setMOvieDuration(String durationText) {
-        duration.setText("");
-    }
+    MovieView movieView = new MovieView();
+    MoviePresenter moviePresenter = new MoviePresenter(movieView);
 
-    public void setMovieDirector(String directorText) {
-        this.director.setText("");
-    }
-
-    public void setMovieList(List<Movie> movies) {
-        movieJList.setModel(new MovieListModel(movies));
-    }
-
-    public void setShowings(List<Showing> showings) { showingsTextArea.setText(""); }
-
-    public void iniShowingCheckoutPanel() {
+    private void iniShowingCheckoutPanel() {
 
         setContentPane(panel1);
         pack();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        moviePresenter.showMovieList();
+        movieJList.setModel(new MovieListModel(movieView.getMovieList()));
         movieJList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         movieJList.setCellRenderer(new ListCellRenderer<Movie>() {
             @Override
@@ -90,7 +78,8 @@ public class ShowingCheckoutPanel extends JFrame {
                 }
             }
         });
-        setSize(500, 500);
+        setLocation(100, 100);
+        setSize(800, 600);
         setVisible(true);
     }
 }

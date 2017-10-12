@@ -4,10 +4,12 @@ import com.mojafirma.model.Movie;
 import com.mojafirma.model.Showing;
 import com.mojafirma.model.Ticket;
 import com.mojafirma.model.dao.TicketDao;
+import com.mojafirma.presenter.MoviePresenter;
+import com.mojafirma.presenter.TicketPresenter;
+import com.mojafirma.presenter.view.MovieView;
+import com.mojafirma.presenter.view.TicketView;
 import com.mojafirma.util.MovieComboBoxModel;
 import com.mojafirma.util.ShowingListModel;
-import javafx.scene.control.Control;
-import javafx.scene.control.RadioButton;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
@@ -18,9 +20,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.ResourceBundle;
 
 
 public class TicketReservationPanel extends JFrame {
@@ -89,17 +89,23 @@ public class TicketReservationPanel extends JFrame {
     private JTextField textField7;
     private JTextField textField8;
 
-    public void setMovieList(List<Movie> movies) {
-        movieChooserBox.setModel(new MovieComboBoxModel(movies));
-    }
+    public TicketReservationPanel() { iniTicketReservationPanel(); }
 
-    public void iniTicketReservationPanel() {
+    MovieView movieView = new MovieView();
+    MoviePresenter moviePresenter = new MoviePresenter(movieView);
+    TicketView ticketView = new TicketView();
+    TicketPresenter ticketPresenter = new TicketPresenter(ticketView);
+
+    private void iniTicketReservationPanel() {
 
         setContentPane(mainPanel);
         pack();
         setTitle("Rezerwacja biletów");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        moviePresenter.showMovieList();
+
+        movieChooserBox.setModel(new MovieComboBoxModel(movieView.getMovieList()));
         movieChooserBox.setRenderer(new BasicComboBoxRenderer() {
             public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
                 super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
@@ -153,9 +159,6 @@ public class TicketReservationPanel extends JFrame {
             seats.add(allRadioButtons.get(i));
         }
 
-        TicketDao ticketDao = new TicketDao();
-        Ticket ticket = new Ticket();
-
         showingsList.addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
@@ -163,7 +166,7 @@ public class TicketReservationPanel extends JFrame {
                 JList<Showing> showingsList = (JList<Showing>) e.getSource();
 
                 Showing selectedShowing = showingsList.getSelectedValue();
-                ticket.setShowing(selectedShowing);
+                ticketView.setShowingAddingTicket(selectedShowing);
 
                 if (!e.getValueIsAdjusting() && !showingsList.isSelectionEmpty()) {
 
@@ -172,7 +175,7 @@ public class TicketReservationPanel extends JFrame {
                     for (int i = 0; i < allRadioButtons.size(); i++) {
                         allRadioButtons.get(i).setEnabled(true);
                         allRadioButtons.get(i).setBackground(new Color(232, 232, 232));
-                        allRadioButtons.get(i).setSelected(false);
+                        seats.clearSelection();
                     }
 
                     for (int i = 0; i < bookedTickets.size(); i++) {
@@ -190,16 +193,16 @@ public class TicketReservationPanel extends JFrame {
         bookTicketButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ticket.setUser_name(userNameTextField.getText());
-                ticket.setUser_last_name(userLastNameTextField.getText());
+                ticketView.setUserNameAddingTicket(userNameTextField.getText());
+                ticketView.setUserLastNameAddingTicket(userLastNameTextField.getText());
 
                 for (int i = 0; i < allRadioButtons.size(); i++) {
                     if (allRadioButtons.get(i).isSelected()) {
-                        ticket.setSeat(Integer.parseInt(allRadioButtons.get(i).getText()));
+                        ticketView.setSeatAddingTicket(Integer.parseInt(allRadioButtons.get(i).getText()));
                         break;
                     }
                 }
-                ticketDao.addTicket(ticket);
+                ticketPresenter.addTicket();
             }
         });
 
