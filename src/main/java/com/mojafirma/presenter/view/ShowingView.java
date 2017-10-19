@@ -14,6 +14,12 @@ public class ShowingView implements ShowingPresenter{
     private ShowingDao showingDao = new ShowingDao();
     private Showing addingShowing = new Showing();
 
+
+    @Override
+    public Showing getShowing(Integer showingId) {
+        return showingDao.getShowing(showingId);
+    }
+
     @Override
     public void addShowing() {
         showingDao.addShowing(addingShowing);

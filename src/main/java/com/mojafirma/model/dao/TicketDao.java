@@ -1,6 +1,5 @@
 package com.mojafirma.model.dao;
 
-import com.mojafirma.model.Showing;
 import com.mojafirma.model.Ticket;
 import com.mojafirma.util.HibernateUtil;
 import org.hibernate.HibernateException;

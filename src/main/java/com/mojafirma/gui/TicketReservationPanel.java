@@ -3,9 +3,8 @@ package com.mojafirma.gui;
 import com.mojafirma.model.Movie;
 import com.mojafirma.model.Showing;
 import com.mojafirma.model.Ticket;
-import com.mojafirma.presenter.MoviePresenter;
-import com.mojafirma.presenter.TicketPresenter;
 import com.mojafirma.presenter.view.MovieView;
+import com.mojafirma.presenter.view.ShowingView;
 import com.mojafirma.presenter.view.TicketView;
 import com.mojafirma.util.MovieComboBoxModel;
 import com.mojafirma.util.ShowingListModel;
@@ -92,6 +91,7 @@ public class TicketReservationPanel extends JFrame {
 
     MovieView movieView = new MovieView();
     TicketView ticketView = new TicketView();
+    ShowingView showingView = new ShowingView();
 
     private void iniTicketReservationPanel() {
 
@@ -167,11 +167,11 @@ public class TicketReservationPanel extends JFrame {
 
                 if (!e.getValueIsAdjusting() && !showingsList.isSelectionEmpty()) {
 
-                    List<Ticket> bookedTickets = selectedShowing.getTickets();
+                    List<Ticket> bookedTickets = showingView.getShowing(selectedShowing.getShowing_id()).getTickets();
 
                     for (int i = 0; i < allRadioButtons.size(); i++) {
                         allRadioButtons.get(i).setEnabled(true);
-                        allRadioButtons.get(i).setBackground(new Color(232, 232, 232));
+                        allRadioButtons.get(i).setBackground(Color.GREEN);
                         seats.clearSelection();
                     }
 
@@ -196,10 +196,14 @@ public class TicketReservationPanel extends JFrame {
                 for (int i = 0; i < allRadioButtons.size(); i++) {
                     if (allRadioButtons.get(i).isSelected()) {
                         ticketView.setSeatAddingTicket(Integer.parseInt(allRadioButtons.get(i).getText()));
+                        allRadioButtons.get(i).setEnabled(false);
+                        allRadioButtons.get(i).setBackground(Color.RED);
                         break;
                     }
                 }
                 ticketView.addTicket();
+                seats.clearSelection();
+
             }
         });
 

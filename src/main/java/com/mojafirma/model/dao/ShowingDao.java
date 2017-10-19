@@ -1,6 +1,5 @@
 package com.mojafirma.model.dao;
 
-import com.mojafirma.model.Movie;
 import com.mojafirma.util.HibernateUtil;
 import com.mojafirma.model.Showing;
 import org.hibernate.HibernateException;
