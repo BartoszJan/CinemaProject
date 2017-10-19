@@ -2,10 +2,18 @@ package com.mojafirma.presenter.view;
 
 import com.mojafirma.model.Showing;
 import com.mojafirma.model.Ticket;
+import com.mojafirma.model.dao.TicketDao;
+import com.mojafirma.presenter.TicketPresenter;
 
-public class TicketView {
+public class TicketView implements TicketPresenter{
 
+    TicketDao ticketDao = new TicketDao();
     Ticket addingTicket = new Ticket();
+
+    @Override
+    public void addTicket() {
+        ticketDao.addTicket(addingTicket);
+    }
 
     public void setShowingAddingTicket(Showing showing) {
         addingTicket.setShowing(showing);
@@ -21,9 +29,5 @@ public class TicketView {
 
     public void setSeatAddingTicket(int seatNumber) {
         addingTicket.setSeat(seatNumber);
-    }
-
-    public Ticket getAddingTicket() {
-        return addingTicket;
     }
 }

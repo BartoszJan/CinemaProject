@@ -26,7 +26,6 @@ public class AddMoviePanel extends JFrame{
     public AddMoviePanel() { iniAddMoviePanel(); }
 
     MovieView movieView = new MovieView();
-    MoviePresenter moviePresenter = new MoviePresenter(movieView);
 
     private void iniAddMoviePanel() {
 
@@ -48,7 +47,7 @@ public class AddMoviePanel extends JFrame{
                 movieView.setYearAddingMovie(yearMovie);
                 movieView.setDurationAddingMovie(duration);
                 movieView.setDirectorAddingMovie(director);
-                moviePresenter.addMovie();
+                movieView.addMovie();
             }
         });
 

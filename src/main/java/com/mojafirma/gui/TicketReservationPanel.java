@@ -3,7 +3,6 @@ package com.mojafirma.gui;
 import com.mojafirma.model.Movie;
 import com.mojafirma.model.Showing;
 import com.mojafirma.model.Ticket;
-import com.mojafirma.model.dao.TicketDao;
 import com.mojafirma.presenter.MoviePresenter;
 import com.mojafirma.presenter.TicketPresenter;
 import com.mojafirma.presenter.view.MovieView;
@@ -92,9 +91,7 @@ public class TicketReservationPanel extends JFrame {
     public TicketReservationPanel() { iniTicketReservationPanel(); }
 
     MovieView movieView = new MovieView();
-    MoviePresenter moviePresenter = new MoviePresenter(movieView);
     TicketView ticketView = new TicketView();
-    TicketPresenter ticketPresenter = new TicketPresenter(ticketView);
 
     private void iniTicketReservationPanel() {
 
@@ -103,9 +100,9 @@ public class TicketReservationPanel extends JFrame {
         setTitle("Rezerwacja biletów");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        moviePresenter.showMovieList();
+        movieView.showMovieList();
 
-        movieChooserBox.setModel(new MovieComboBoxModel(movieView.getMovieList()));
+        movieChooserBox.setModel(new MovieComboBoxModel(movieView.showMovieList()));
         movieChooserBox.setRenderer(new BasicComboBoxRenderer() {
             public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
                 super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
@@ -202,7 +199,7 @@ public class TicketReservationPanel extends JFrame {
                         break;
                     }
                 }
-                ticketPresenter.addTicket();
+                ticketView.addTicket();
             }
         });
 

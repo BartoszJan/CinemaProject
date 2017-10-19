@@ -4,12 +4,20 @@ package com.mojafirma.presenter.view;
 import com.mojafirma.model.Movie;
 import com.mojafirma.model.Showing;
 import com.mojafirma.model.Ticket;
+import com.mojafirma.model.dao.ShowingDao;
+import com.mojafirma.presenter.ShowingPresenter;
 
 import java.time.LocalDateTime;
 
-public class ShowingView {
+public class ShowingView implements ShowingPresenter{
 
-    Showing addingShowing = new Showing();
+    private ShowingDao showingDao = new ShowingDao();
+    private Showing addingShowing = new Showing();
+
+    @Override
+    public void addShowing() {
+        showingDao.addShowing(addingShowing);
+    }
 
     public void setMovieAddingShowing(Movie movie) {
         addingShowing.setMovie(movie);
@@ -19,11 +27,7 @@ public class ShowingView {
         addingShowing.setMovie_date_time(dateTime);
     }
 
-    public void setRoomAddingShwoing(int roomNumber) {
+    public void setRoomAddingShowing(int roomNumber) {
         addingShowing.setRoom_number(roomNumber);
-    }
-
-    public Showing getAddingShowing() {
-        return addingShowing;
     }
 }

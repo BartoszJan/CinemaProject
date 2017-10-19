@@ -1,22 +1,28 @@
 package com.mojafirma.presenter.view;
 
 import com.mojafirma.model.Movie;
+import com.mojafirma.model.dao.MovieDao;
+import com.mojafirma.presenter.MoviePresenter;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MovieView {
+public class MovieView implements MoviePresenter {
 
     private List<Movie> movieList = new ArrayList<>();
     private Movie addingMovie = new Movie();
+    private MovieDao movieDao = new MovieDao();
 
-    public void setMovieList(List<Movie> movies) {
-        movieList = movies;
+    @Override
+    public List<Movie> showMovieList() {
+        movieList = movieDao.getMovieList();
+        return movieList;
     }
 
-    public List<Movie> getMovieList() {
-        return movieList;
+    @Override
+    public void addMovie() {
+        movieDao.addMovie(addingMovie);
     }
 
     public void setTitleAddingMovie(String title) {
@@ -33,10 +39,6 @@ public class MovieView {
 
     public void setDirectorAddingMovie(String director) {
         addingMovie.setDirector(director);
-    }
-
-    public Movie getAddingMovie() {
-        return addingMovie;
     }
 }
 

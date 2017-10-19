@@ -1,7 +1,6 @@
 package com.mojafirma.gui;
 
 import com.mojafirma.model.Movie;
-import com.mojafirma.presenter.MoviePresenter;
 import com.mojafirma.presenter.view.MovieView;
 import com.mojafirma.util.MovieListModel;
 
@@ -28,7 +27,6 @@ public class ShowingCheckoutPanel extends JFrame {
     public ShowingCheckoutPanel() { iniShowingCheckoutPanel(); }
 
     MovieView movieView = new MovieView();
-    MoviePresenter moviePresenter = new MoviePresenter(movieView);
 
     private void iniShowingCheckoutPanel() {
 
@@ -36,8 +34,7 @@ public class ShowingCheckoutPanel extends JFrame {
         pack();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        moviePresenter.showMovieList();
-        movieJList.setModel(new MovieListModel(movieView.getMovieList()));
+        movieJList.setModel(new MovieListModel(movieView.showMovieList()));
         movieJList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         movieJList.setCellRenderer(new ListCellRenderer<Movie>() {
             @Override

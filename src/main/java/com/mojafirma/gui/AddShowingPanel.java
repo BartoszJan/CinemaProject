@@ -1,13 +1,8 @@
 package com.mojafirma.gui;
 
 import com.mojafirma.model.Movie;
-import com.mojafirma.presenter.MoviePresenter;
-import com.mojafirma.presenter.ShowingPresenter;
 import com.mojafirma.presenter.view.MovieView;
 import com.mojafirma.presenter.view.ShowingView;
-import com.mojafirma.util.HibernateUtil;
-import com.mojafirma.model.Showing;
-import com.mojafirma.model.dao.ShowingDao;
 import com.mojafirma.util.MovieComboBoxModel;
 
 import javax.swing.*;
@@ -17,7 +12,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
 
 public class AddShowingPanel extends JFrame {
     private JPanel panel1;
@@ -34,9 +28,7 @@ public class AddShowingPanel extends JFrame {
     public AddShowingPanel(){ iniAddShowingPanel(); }
 
     MovieView movieView = new MovieView();
-    MoviePresenter moviePresenter = new MoviePresenter(movieView);
     ShowingView showingView = new ShowingView();
-    ShowingPresenter showingPresenter = new ShowingPresenter(showingView);
 
     private void iniAddShowingPanel() {
 
@@ -44,9 +36,7 @@ public class AddShowingPanel extends JFrame {
         pack();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        moviePresenter.showMovieList();
-
-        chooseMovieComboBox.setModel(new MovieComboBoxModel(movieView.getMovieList()));
+        chooseMovieComboBox.setModel(new MovieComboBoxModel(movieView.showMovieList()));
         chooseMovieComboBox.setRenderer(new BasicComboBoxRenderer(){
             public Component getListCellRendererComponent(JList list, Object value, int index,              boolean isSelected, boolean cellHasFocus){
                 super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
@@ -68,8 +58,8 @@ public class AddShowingPanel extends JFrame {
                         Movie movie = (Movie) chooseMovieComboBox.getSelectedItem();
                         showingView.setMovieAddingShowing(movie);
                         showingView.setDateTimeAddingShowing(dateTimeShowing);
-                        showingView.setRoomAddingShwoing(roomNumber);
-                        showingPresenter.addShowing();
+                        showingView.setRoomAddingShowing(roomNumber);
+                        showingView.addShowing();
                     }
                 });
 
