@@ -17,8 +17,8 @@ public class Showing {
     @JoinColumn(name = "movie_id", nullable=false)
     private Movie movie;
 
-    @Column(name = "movie_date_time")
-    private LocalDateTime movie_date_time;
+    @Column(name = "showing_date_time")
+    private LocalDateTime showing_date_time;
 
     @Column(name = "room_number")
     private int room_number;
@@ -44,12 +44,12 @@ public class Showing {
         this.movie = movie;
     }
 
-    public LocalDateTime getMovie_date_time() {
-        return movie_date_time;
+    public LocalDateTime getShowing_date_time() {
+        return showing_date_time;
     }
 
-    public void setMovie_date_time(LocalDateTime movie_date_time) {
-        this.movie_date_time = movie_date_time;
+    public void setShowing_date_time(LocalDateTime showing_date_time) {
+        this.showing_date_time = showing_date_time;
     }
 
     public int getRoom_number() {
@@ -73,7 +73,7 @@ public class Showing {
         return "Showing{" +
                 "showing_id=" + showing_id +
                 ", movie=" + movie +
-                ", movie_date_time=" + movie_date_time +
+                ", showing_date_time=" + showing_date_time +
                 ", room_number=" + room_number +
                 '}';
     }

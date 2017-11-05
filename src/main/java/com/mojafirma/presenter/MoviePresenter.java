@@ -11,27 +11,15 @@ public interface MoviePresenter {
     MovieDao movieDao = new MovieDao();
     Movie addingMovie = new Movie();
 
-    default List<Movie> showMovieList() {
-        return movieDao.getMovieList();
-    }
+    List<Movie> showMovieList();
 
-    default void addMovie() {
-        movieDao.addMovie(addingMovie);
-    }
+    void addMovie();
 
-    default void setTitleAddingMovie(String title) {
-        addingMovie.setTitle(title);
-    }
+    void setTitleAddingMovie(String title);
 
-    default void setYearAddingMovie(LocalDate year) {
-        addingMovie.setYear(year);
-    }
+    void setYearAddingMovie(LocalDate year);
 
-    default void setDurationAddingMovie(int duration) {
-        addingMovie.setDuration(duration);
-    }
+    void setDurationAddingMovie(int duration);
 
-    default void setDirectorAddingMovie(String director) {
-        addingMovie.setDirector(director);
-    }
+    void setDirectorAddingMovie(String director);
 }

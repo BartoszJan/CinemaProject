@@ -11,23 +11,13 @@ public interface ShowingPresenter {
     ShowingDao showingDao = new ShowingDao();
     Showing addingShowing = new Showing();
 
-    default Showing getShowing(Integer showingId) {
-        return showingDao.getShowing(showingId);
-    }
+    Showing getShowing(Integer showingId);
 
-    default void addShowing() {
-        showingDao.addShowing(addingShowing);
-    }
+    void addShowing();
 
-    default void setMovieAddingShowing(Movie movie) {
-        addingShowing.setMovie(movie);
-    }
+    void setMovieAddingShowing(Movie movie);
 
-    default void setDateTimeAddingShowing(LocalDateTime dateTime) {
-        addingShowing.setMovie_date_time(dateTime);
-    }
+    void setDateTimeAddingShowing(LocalDateTime dateTime);
 
-    default void setRoomAddingShowing(int roomNumber) {
-        addingShowing.setRoom_number(roomNumber);
-    }
+    void setRoomAddingShowing(int roomNumber);
 }

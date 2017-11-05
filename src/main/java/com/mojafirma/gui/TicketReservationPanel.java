@@ -127,7 +127,7 @@ public class TicketReservationPanel extends JFrame {
         showingsList.setCellRenderer(new ListCellRenderer<Showing>() {
             @Override
             public Component getListCellRendererComponent(JList<? extends Showing> list, Showing value, int index, boolean isSelected, boolean cellHasFocus) {
-                JLabel listItem = new JLabel(value.getMovie_date_time().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss")).toString() + " Nr sali: " + value.getRoom_number());
+                JLabel listItem = new JLabel(value.getShowing_date_time().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss")).toString() + " Nr sali: " + value.getRoom_number());
                 listItem.setOpaque(true);
                 if (isSelected)
 

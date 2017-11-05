@@ -15,7 +15,7 @@ public class ShowingApp {
         MovieDao movieDao = new MovieDao();
         Showing matrixShowing = new Showing();
         matrixShowing.setMovie(movieDao.getMovie(2));
-        matrixShowing.setMovie_date_time(LocalDateTime.of(2017, 10, 16, 21, 15));
+        matrixShowing.setShowing_date_time(LocalDateTime.of(2017, 10, 16, 21, 15));
         matrixShowing.setRoom_number(1);
 
         showingDao.addShowing(matrixShowing);

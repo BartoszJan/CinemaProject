@@ -9,23 +9,13 @@ public interface TicketPresenter {
     TicketDao ticketDao = new TicketDao();
     Ticket addingTicket = new Ticket();
 
-    default void addTicket() {
-        ticketDao.addTicket(addingTicket);
-    }
+    void addTicket();
 
-    default void setShowingAddingTicket(Showing showing) {
-        addingTicket.setShowing(showing);
-    }
+    void setShowingAddingTicket(Showing showing);
 
-    default void setUserNameAddingTicket(String name) {
-        addingTicket.setUser_name(name);
-    }
+    void setUserNameAddingTicket(String name);
 
-    default void setUserLastNameAddingTicket(String lastName) {
-        addingTicket.setUser_last_name(lastName);
-    }
+    void setUserLastNameAddingTicket(String lastName);
 
-    default void setSeatAddingTicket(int seatNumber) {
-        addingTicket.setSeat(seatNumber);
-    }
+    void setSeatAddingTicket(int seatNumber);
 }

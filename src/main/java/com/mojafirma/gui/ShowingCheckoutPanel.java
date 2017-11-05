@@ -70,7 +70,7 @@ public class ShowingCheckoutPanel extends JFrame {
                 director.setText(selectedMovie.getDirector());
                 showingsTextArea.setText("");
                 for (int i = 0; i < selectedMovie.getShowings().size(); i++) {
-                    showingsTextArea.append((i + 1) + ") " + selectedMovie.getShowings().get(i).getMovie_date_time().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss")).toString()
+                    showingsTextArea.append((i + 1) + ") " + selectedMovie.getShowings().get(i).getShowing_date_time().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss")).toString()
                             + " // Sala numer: " + selectedMovie.getShowings().get(i).getRoom_number() + "\n\n");
                 }
             }
