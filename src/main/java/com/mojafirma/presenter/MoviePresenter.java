@@ -13,7 +13,11 @@ public interface MoviePresenter {
 
     List<Movie> showMovieList();
 
+    Movie getMovie(int id);
+
     void addMovie();
+
+    void deleteMovie(Movie movie);
 
     void setTitleAddingMovie(String title);
 

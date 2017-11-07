@@ -14,8 +14,19 @@ public class MovieView implements MoviePresenter {
     }
 
     @Override
+    public Movie getMovie(int id) {
+        Movie movie = movieDao.getMovie(id);
+        return movie;
+    }
+
+    @Override
     public void addMovie() {
         movieDao.addMovie(addingMovie);
+    }
+
+    @Override
+    public void deleteMovie(Movie movie) {
+        movieDao.deleteMovie(movie);
     }
 
     @Override

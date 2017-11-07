@@ -43,4 +43,19 @@ public class ShowingDao {
 
         return showing;
     }
+
+    public void deleteShowing(Showing showing) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = null;
+        try{
+            tx = session.beginTransaction();
+            session.delete(showing);
+            tx.commit();
+        }catch (HibernateException e) {
+            if (tx!=null) tx.rollback();
+            e.printStackTrace();
+        }finally {
+            session.close();
+        }
+    }
 }

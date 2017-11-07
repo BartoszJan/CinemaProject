@@ -8,6 +8,8 @@ import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.time.format.DateTimeFormatter;
 
 public class ShowingCheckoutPanel extends JFrame {
@@ -23,6 +25,7 @@ public class ShowingCheckoutPanel extends JFrame {
     private JTextField duration;
     private JTextField textField7;
     private JTextField director;
+    private JButton backButton;
 
     public ShowingCheckoutPanel() { iniShowingCheckoutPanel(); }
 
@@ -33,6 +36,9 @@ public class ShowingCheckoutPanel extends JFrame {
         setContentPane(panel1);
         pack();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocation(100, 100);
+        setSize(800, 600);
+        setVisible(true);
 
         movieJList.setModel(new MovieListModel(movieView.showMovieList()));
         movieJList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -75,8 +81,18 @@ public class ShowingCheckoutPanel extends JFrame {
                 }
             }
         });
-        setLocation(100, 100);
-        setSize(800, 600);
-        setVisible(true);
+
+        backButton.setText("← Wróć Do Panelu Klienta");
+        backButton.setBackground(Color.LIGHT_GRAY);
+        backButton.setForeground(Color.BLACK);
+        backButton.setFont(new Font("Consolas", Font.BOLD, 15));
+
+        backButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                ClientPanel clientPanel = new ClientPanel();
+            }
+        });
     }
 }

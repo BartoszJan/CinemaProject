@@ -32,4 +32,9 @@ public class ShowingView implements ShowingPresenter{
     public void setRoomAddingShowing(int roomNumber) {
         addingShowing.setRoom_number(roomNumber);
     }
+
+    @Override
+    public void deleteShowing(Showing showing) {
+        showingDao.deleteShowing(showing);
+    }
 }

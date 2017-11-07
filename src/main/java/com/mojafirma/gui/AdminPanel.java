@@ -14,45 +14,94 @@ public class AdminPanel extends JFrame {
 
     private void iniAdminPanel() {
 
-    setTitle("Panel Administratora");
-    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    setSize(700, 500);
-    setLocation(100, 100);
+        setTitle("Panel Administratora");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(700, 500);
+        setLocation(100, 100);
 
-    setVisible(true);
+        setVisible(true);
 
-    GridLayout gridLayout = new GridLayout(1,2);
-    JPanel panel = new JPanel();
+        GridLayout gridLayout = new GridLayout(2,2);
+        JPanel panel = new JPanel();
         panel.setLayout(gridLayout);
-    add(panel);
 
-    JButton goToAddMoviePanel = new JButton();
+        JButton goToAddMoviePanel = new JButton();
         goToAddMoviePanel.setText("Dodaj Film Do Bazy");
-        goToAddMoviePanel.setBackground(Color.GRAY);
+        goToAddMoviePanel.setBackground(Color.BLACK);
         goToAddMoviePanel.setForeground(Color.WHITE);
         goToAddMoviePanel.setFont(new Font("Consolas", Font.BOLD, 20));
-    JButton goToAddShowingPanel = new JButton();
+
+        JButton goToAddShowingPanel = new JButton();
         goToAddShowingPanel.setText("Dodaj Seans Do Bazy");
         goToAddShowingPanel.setBackground(Color.WHITE);
-        goToAddShowingPanel.setForeground(Color.GRAY);
+        goToAddShowingPanel.setForeground(Color.BLACK);
         goToAddShowingPanel.setFont(new Font("Consolas", Font.BOLD, 20));
-        panel.add(goToAddMoviePanel);
-        panel.add(goToAddShowingPanel);
+
+        JButton goToDeleteMoviePanel = new JButton();
+        goToDeleteMoviePanel.setText("Usuń Film Z Bazy");
+        goToDeleteMoviePanel.setBackground(Color.WHITE);
+        goToDeleteMoviePanel.setForeground(Color.BLACK);
+        goToDeleteMoviePanel.setFont(new Font("Consolas", Font.BOLD, 20));
+
+        JButton goToDeleteShowingPanel = new JButton();
+        goToDeleteShowingPanel.setText("Usuń Seans Z Bazy");
+        goToDeleteShowingPanel.setBackground(Color.BLACK);
+        goToDeleteShowingPanel.setForeground(Color.WHITE);
+        goToDeleteShowingPanel.setFont(new Font("Consolas", Font.BOLD, 20));
+
+        JButton backButton = new JButton();
+        backButton.setText("← Wróć Do Menu");
+        backButton.setBackground(Color.LIGHT_GRAY);
+        backButton.setForeground(Color.BLACK);
+        backButton.setFont(new Font("Consolas", Font.BOLD, 15));
 
         goToAddMoviePanel.addActionListener(new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            dispose();
-            AddMoviePanel addMoviePanel = new AddMoviePanel();
-        }
-    });
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                AddMoviePanel addMoviePanel = new AddMoviePanel();
+            }
+        });
 
         goToAddShowingPanel.addActionListener(new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            dispose();
-           AddShowingPanel addShowingPanel = new AddShowingPanel();
-        }
-    });
-}
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                AddShowingPanel addShowingPanel = new AddShowingPanel();
+            }
+        });
+
+        goToDeleteMoviePanel.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                DeleteMoviePanel deleteMoviePanel = new DeleteMoviePanel();
+            }
+        });
+
+        goToDeleteShowingPanel.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                DeleteShowingPanel deleteShowingPanel = new DeleteShowingPanel();
+            }
+        });
+
+        backButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                MenuPanel menuPanel = new MenuPanel();
+            }
+        });
+
+        panel.add(goToAddMoviePanel,0);
+        panel.add(goToAddShowingPanel,1);
+        panel.add(goToDeleteMoviePanel,2);
+        panel.add(goToDeleteShowingPanel,3);
+
+        BorderLayout borderLayout = new BorderLayout();
+        add(panel, borderLayout.CENTER);
+        add(backButton, borderLayout.SOUTH);
+    }
 }

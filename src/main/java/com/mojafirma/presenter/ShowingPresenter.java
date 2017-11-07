@@ -20,4 +20,6 @@ public interface ShowingPresenter {
     void setDateTimeAddingShowing(LocalDateTime dateTime);
 
     void setRoomAddingShowing(int roomNumber);
+
+    void deleteShowing(Showing showing);
 }

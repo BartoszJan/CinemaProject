@@ -2,7 +2,6 @@ package com.mojafirma.gui;
 
 import com.mojafirma.model.Movie;
 import com.mojafirma.presenter.view.MovieView;
-import com.mojafirma.presenter.view.ShowingView;
 import com.mojafirma.util.MovieComboBoxModel;
 
 import javax.swing.*;
@@ -10,28 +9,26 @@ import javax.swing.plaf.basic.BasicComboBoxRenderer;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
-public class AddShowingPanel extends JFrame {
+public class DeleteMoviePanel extends JFrame{
     private JPanel panel1;
-
-    private JTextField headTextField;
-    private JTextField textField3;
-    private JTextField dateTimeInput;
-    private JTextField textField2;
-    private JTextField roomNumberInput;
-    private JButton button1;
     private JTextField textField1;
     private JComboBox chooseMovieComboBox;
+    private JButton deleteMovieButton;
     private JButton backButton;
+    private JTextField textField3;
+    private JTextField textField4;
+    private JTextField yearTextField;
+    private JTextField textField6;
+    private JTextField durationTextField;
+    private JTextField textField7;
+    private JTextField directorTextField;
 
-    public AddShowingPanel(){ iniAddShowingPanel(); }
+    public DeleteMoviePanel() { iniDeleteMoviePanel(); }
 
     MovieView movieView = new MovieView();
-    ShowingView showingView = new ShowingView();
 
-    private void iniAddShowingPanel() {
+    private void iniDeleteMoviePanel() {
 
         setContentPane(panel1);
         pack();
@@ -52,20 +49,27 @@ public class AddShowingPanel extends JFrame {
             }
         });
 
-                button1.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
+        chooseMovieComboBox.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Movie selectedMovie = (Movie)chooseMovieComboBox.getSelectedItem();
+                yearTextField.setText(selectedMovie.getYear().toString());
+                directorTextField.setText(selectedMovie.getDirector());
+                durationTextField.setText(String.valueOf(selectedMovie.getDuration()));
+            }
+        });
 
-                        LocalDateTime dateTimeShowing = LocalDateTime.parse(dateTimeInput.getText(), DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-                        int roomNumber = Integer.parseInt(roomNumberInput.getText());
-
-                        Movie movie = (Movie) chooseMovieComboBox.getSelectedItem();
-                        showingView.setMovieAddingShowing(movie);
-                        showingView.setDateTimeAddingShowing(dateTimeShowing);
-                        showingView.setRoomAddingShowing(roomNumber);
-                        showingView.addShowing();
-                    }
-                });
+        deleteMovieButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Movie selectedMovie = (Movie)chooseMovieComboBox.getSelectedItem();
+                movieView.deleteMovie(selectedMovie);
+                chooseMovieComboBox.setModel(new MovieComboBoxModel(movieView.showMovieList()));
+                yearTextField.setText("");
+                durationTextField.setText("");
+                directorTextField.setText("");
+            }
+        });
 
         backButton.setText("← Wróć Do Panelu Administratora");
         backButton.setBackground(Color.LIGHT_GRAY);
@@ -79,7 +83,5 @@ public class AddShowingPanel extends JFrame {
                 AdminPanel adminPanel = new AdminPanel();
             }
         });
-
     }
 }
-

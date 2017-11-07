@@ -27,13 +27,14 @@ public class MenuPanel extends JFrame{
 
         JButton goToClientPanel = new JButton();
         goToClientPanel.setText("Panel Klienta");
-        goToClientPanel.setBackground(Color.GRAY);
+        goToClientPanel.setBackground(Color.BLACK);
         goToClientPanel.setForeground(Color.WHITE);
         goToClientPanel.setFont(new Font("Consolas", Font.BOLD, 20));
+
         JButton goToAdminPanel = new JButton();
         goToAdminPanel.setText("Panel Administratora");
         goToAdminPanel.setBackground(Color.WHITE);
-        goToAdminPanel.setForeground(Color.GRAY);
+        goToAdminPanel.setForeground(Color.BLACK);
         goToAdminPanel.setFont(new Font("Consolas", Font.BOLD, 20));
         panel.add(goToClientPanel);
         panel.add(goToAdminPanel);

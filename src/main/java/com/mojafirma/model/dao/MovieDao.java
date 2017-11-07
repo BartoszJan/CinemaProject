@@ -32,14 +32,14 @@ public class MovieDao {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
         Movie movie = null;
-        try{
+        try {
             tx = session.beginTransaction();
             movie = session.get(Movie.class, movieId);
             tx.commit();
-        }catch (HibernateException e) {
-            if (tx!=null) tx.rollback();
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
             e.printStackTrace();
-        }finally {
+        } finally {
             session.close();
         }
 
@@ -50,17 +50,32 @@ public class MovieDao {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
         List<Movie> movies = null;
-        try{
+        try {
             tx = session.beginTransaction();
             movies = session.createQuery("FROM Movie").list();
             tx.commit();
-        }catch (HibernateException e) {
-            if (tx!=null) tx.rollback();
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
             e.printStackTrace();
-        }finally {
+        } finally {
             session.close();
         }
 
         return movies;
+    }
+
+    public void deleteMovie(Movie movie) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            session.delete(movie);
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
     }
 }

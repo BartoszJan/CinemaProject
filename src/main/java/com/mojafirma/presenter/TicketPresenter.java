@@ -11,6 +11,8 @@ public interface TicketPresenter {
 
     void addTicket();
 
+    void deleteTicket(Ticket ticket);
+
     void setShowingAddingTicket(Showing showing);
 
     void setUserNameAddingTicket(String name);

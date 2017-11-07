@@ -86,6 +86,7 @@ public class TicketReservationPanel extends JFrame {
     private JTextField userLastNameTextField;
     private JTextField textField7;
     private JTextField textField8;
+    private JButton backButton;
 
     public TicketReservationPanel() { iniTicketReservationPanel(); }
 
@@ -99,6 +100,9 @@ public class TicketReservationPanel extends JFrame {
         pack();
         setTitle("Rezerwacja biletów");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocation(100, 100);
+        setSize(700, 400);
+        setVisible(true);
 
         movieView.showMovieList();
 
@@ -207,8 +211,17 @@ public class TicketReservationPanel extends JFrame {
             }
         });
 
-        setLocation(100, 100);
-        setSize(700, 400);
-        setVisible(true);
+        backButton.setText("← Wróć Do Panelu Klienta");
+        backButton.setBackground(Color.LIGHT_GRAY);
+        backButton.setForeground(Color.BLACK);
+        backButton.setFont(new Font("Consolas", Font.BOLD, 15));
+
+        backButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                ClientPanel clientPanel = new ClientPanel();
+            }
+        });
     }
 }

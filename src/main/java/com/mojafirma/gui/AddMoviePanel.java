@@ -4,6 +4,7 @@ import com.mojafirma.presenter.MoviePresenter;
 import com.mojafirma.presenter.view.MovieView;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
@@ -22,6 +23,7 @@ public class AddMoviePanel extends JFrame{
     private JTextField textField7;
     private JTextField directorInput;
     private JButton button1;
+    private JButton backButton;
 
     public AddMoviePanel() { iniAddMoviePanel(); }
 
@@ -33,6 +35,8 @@ public class AddMoviePanel extends JFrame{
         pack();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocation(100, 100);
+        setSize(500, 500);
+        setVisible(true);
 
         button1.addActionListener(new ActionListener() {
             @Override
@@ -51,7 +55,17 @@ public class AddMoviePanel extends JFrame{
             }
         });
 
-        setSize(500, 500);
-        setVisible(true);
+        backButton.setText("← Wróć Do Panelu Administratora");
+        backButton.setBackground(Color.LIGHT_GRAY);
+        backButton.setForeground(Color.BLACK);
+        backButton.setFont(new Font("Consolas", Font.BOLD, 15));
+
+        backButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                AdminPanel adminPanel = new AdminPanel();
+            }
+        });
     }
 }

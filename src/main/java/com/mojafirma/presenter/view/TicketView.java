@@ -1,6 +1,7 @@
 package com.mojafirma.presenter.view;
 
 import com.mojafirma.model.Showing;
+import com.mojafirma.model.Ticket;
 import com.mojafirma.presenter.TicketPresenter;
 
 public class TicketView implements TicketPresenter{
@@ -8,6 +9,11 @@ public class TicketView implements TicketPresenter{
     @Override
     public void addTicket() {
         ticketDao.addTicket(addingTicket);
+    }
+
+    @Override
+    public void deleteTicket(Ticket ticket) {
+        ticketDao.deleteTicket(ticket);
     }
 
     @Override
