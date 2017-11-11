@@ -1,16 +1,20 @@
 package com.mojafirma.gui;
 
 import com.mojafirma.model.Movie;
+import com.mojafirma.model.Showing;
 import com.mojafirma.presenter.view.MovieView;
 import com.mojafirma.util.MovieListModel;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class ShowingCheckoutPanel extends JFrame {
     private JPanel panel1;
@@ -75,7 +79,10 @@ public class ShowingCheckoutPanel extends JFrame {
                 duration.setText("" + selectedMovie.getDuration());
                 director.setText(selectedMovie.getDirector());
                 showingsTextArea.setText("");
-                for (int i = 0; i < selectedMovie.getShowings().size(); i++) {
+
+                List<Showing> showingsByDate = selectedMovie.getShowings().stream().sorted((e1, e2) -> e1.getShowing_date_time().compareTo(e2.getShowing_date_time()))
+                        .collect(Collectors.toList());
+                for (int i = 0; i < showingsByDate.size(); i++) {
                     showingsTextArea.append((i + 1) + ") " + selectedMovie.getShowings().get(i).getShowing_date_time().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss")).toString()
                             + " // Sala numer: " + selectedMovie.getShowings().get(i).getRoom_number() + "\n\n");
                 }

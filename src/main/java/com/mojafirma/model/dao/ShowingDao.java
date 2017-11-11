@@ -6,6 +6,8 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import java.util.List;
+
 public class ShowingDao {
 
     public Integer addShowing(Showing showing) {
@@ -24,6 +26,24 @@ public class ShowingDao {
             session.close();
         }
         return showingID;
+    }
+
+    public List<Showing> getShowingList() {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = null;
+        List<Showing> showings = null;
+        try {
+            tx = session.beginTransaction();
+            showings = session.createQuery("FROM Showing").list();
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+
+        return showings;
     }
 
     public Showing getShowing(Integer showingId) {

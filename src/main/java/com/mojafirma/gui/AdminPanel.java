@@ -21,7 +21,7 @@ public class AdminPanel extends JFrame {
 
         setVisible(true);
 
-        GridLayout gridLayout = new GridLayout(2,2);
+        GridLayout gridLayout = new GridLayout(3,2);
         JPanel panel = new JPanel();
         panel.setLayout(gridLayout);
 
@@ -48,6 +48,12 @@ public class AdminPanel extends JFrame {
         goToDeleteShowingPanel.setBackground(Color.BLACK);
         goToDeleteShowingPanel.setForeground(Color.WHITE);
         goToDeleteShowingPanel.setFont(new Font("Consolas", Font.BOLD, 20));
+
+        JButton goToDeleteTicketPanel = new JButton();
+        goToDeleteTicketPanel.setText("Usuń Rezerwację Z Bazy");
+        goToDeleteTicketPanel.setBackground(Color.BLACK);
+        goToDeleteTicketPanel.setForeground(Color.WHITE);
+        goToDeleteTicketPanel.setFont(new Font("Consolas", Font.BOLD, 20));
 
         JButton backButton = new JButton();
         backButton.setText("← Wróć Do Menu");
@@ -87,6 +93,14 @@ public class AdminPanel extends JFrame {
             }
         });
 
+        goToDeleteTicketPanel.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                DeleteTicketPanel deleteTicketPanel = new DeleteTicketPanel();
+            }
+        });
+
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -99,6 +113,7 @@ public class AdminPanel extends JFrame {
         panel.add(goToAddShowingPanel,1);
         panel.add(goToDeleteMoviePanel,2);
         panel.add(goToDeleteShowingPanel,3);
+        panel.add(goToDeleteTicketPanel,4);
 
         BorderLayout borderLayout = new BorderLayout();
         add(panel, borderLayout.CENTER);

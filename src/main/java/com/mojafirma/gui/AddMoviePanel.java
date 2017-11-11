@@ -1,6 +1,5 @@
 package com.mojafirma.gui;
 
-import com.mojafirma.presenter.MoviePresenter;
 import com.mojafirma.presenter.view.MovieView;
 
 import javax.swing.*;

@@ -4,7 +4,6 @@ import com.mojafirma.model.Showing;
 
 import javax.swing.*;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class ShowingListModel extends AbstractListModel<Showing> {
 
@@ -21,9 +20,7 @@ public class ShowingListModel extends AbstractListModel<Showing> {
 
     @Override
     public Showing getElementAt(int index) {
-        return showings.stream().sorted((e1, e2) -> e1.getShowing_date_time().compareTo(e2.getShowing_date_time()))
-                .collect(Collectors.toList()).get(index);
+        return showings.get(index);
     }
-
 
 }

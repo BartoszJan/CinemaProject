@@ -5,6 +5,7 @@ import com.mojafirma.model.Showing;
 import com.mojafirma.model.dao.ShowingDao;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 public interface ShowingPresenter {
 
@@ -12,6 +13,8 @@ public interface ShowingPresenter {
     Showing addingShowing = new Showing();
 
     Showing getShowing(Integer showingId);
+
+    List<Showing> getShowings();
 
     void addShowing();
 

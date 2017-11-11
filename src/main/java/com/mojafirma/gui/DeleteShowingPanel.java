@@ -13,6 +13,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.format.DateTimeFormatter;
+import java.util.*;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class DeleteShowingPanel extends JFrame{
     private JPanel panel1;
@@ -54,7 +57,9 @@ public class DeleteShowingPanel extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 Movie choosingMovie = (Movie) chooseMovieComboBox.getSelectedItem();
                 if (!chooseShowingList.getValueIsAdjusting()) {
-                    chooseShowingList.setModel(new ShowingListModel(choosingMovie.getShowings()));
+                    List<Showing> showingsByDate = choosingMovie.getShowings().stream().sorted((e1, e2) -> e1.getShowing_date_time().compareTo(e2.getShowing_date_time()))
+                            .collect(Collectors.toList());
+                    chooseShowingList.setModel(new ShowingListModel(showingsByDate));
                 }
             }
         });

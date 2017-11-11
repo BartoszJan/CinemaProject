@@ -4,11 +4,23 @@ import com.mojafirma.model.Showing;
 import com.mojafirma.model.Ticket;
 import com.mojafirma.presenter.TicketPresenter;
 
+import java.util.List;
+
 public class TicketView implements TicketPresenter{
 
     @Override
     public void addTicket() {
         ticketDao.addTicket(addingTicket);
+    }
+
+    @Override
+    public Ticket getTicket(int ticketId) {
+        return ticketDao.getTicket(ticketId);
+    }
+
+    @Override
+    public List<Ticket> getTickets() {
+        return ticketDao.getTicketList();
     }
 
     @Override

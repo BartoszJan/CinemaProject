@@ -469,16 +469,6 @@
         <properties/>
         <border type="none"/>
         <children>
-          <component id="7e9d6" class="javax.swing.JList" binding="showingsList">
-            <constraints>
-              <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="2" anchor="0" fill="3" indent="0" use-parent-layout="false">
-                <preferred-size width="150" height="50"/>
-              </grid>
-            </constraints>
-            <properties>
-              <font name="Consolas" size="12"/>
-            </properties>
-          </component>
           <component id="1c23a" class="javax.swing.JTextField" binding="textField2">
             <constraints>
               <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
@@ -557,6 +547,21 @@
               <text value="Podaj Imię"/>
             </properties>
           </component>
+          <scrollpane id="9d78c">
+            <constraints>
+              <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <component id="7e9d6" class="javax.swing.JList" binding="showingsList">
+                <constraints/>
+                <properties>
+                  <font name="Consolas" size="12"/>
+                </properties>
+              </component>
+            </children>
+          </scrollpane>
         </children>
       </grid>
       <component id="b5d85" class="javax.swing.JButton" binding="bookTicketButton">

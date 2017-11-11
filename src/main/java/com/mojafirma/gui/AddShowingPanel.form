@@ -82,7 +82,7 @@
         <properties>
           <background color="-7828343"/>
           <editable value="false"/>
-          <font name="Consolas" size="14" style="3"/>
+          <font name="Consolas" size="16" style="3"/>
           <horizontalAlignment value="0"/>
           <text value="Dodaj Seans Do Bazy:"/>
         </properties>

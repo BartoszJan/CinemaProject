@@ -5,12 +5,18 @@ import com.mojafirma.model.Showing;
 import com.mojafirma.presenter.ShowingPresenter;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class ShowingView implements ShowingPresenter{
 
     @Override
     public Showing getShowing(Integer showingId) {
         return showingDao.getShowing(showingId);
+    }
+
+    @Override
+    public List<Showing> getShowings() {
+        return showingDao.getShowingList();
     }
 
     @Override

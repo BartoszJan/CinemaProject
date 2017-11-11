@@ -19,6 +19,7 @@ import java.awt.event.ActionListener;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 public class TicketReservationPanel extends JFrame {
@@ -123,7 +124,9 @@ public class TicketReservationPanel extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 Movie movie = (Movie) movieChooserBox.getSelectedItem();
                 if (!showingsList.getValueIsAdjusting()) {
-                    showingsList.setModel(new ShowingListModel(movie.getShowings()));
+                    List<Showing> showingsByDate = movie.getShowings().stream().sorted((e1, e2) -> e1.getShowing_date_time().compareTo(e2.getShowing_date_time()))
+                            .collect(Collectors.toList());
+                    showingsList.setModel(new ShowingListModel(showingsByDate));
                 }
             }
         });
