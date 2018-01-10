@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<ScrollPane fx:id="content" fitToHeight="true" fitToWidth="true" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <content>
+      <VBox prefHeight="430.0" prefWidth="1006.0">
+        <children>
+            <MenuBar>
+               <menus>
+                  <Menu mnemonicParsing="false" text="File">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="New" />
+                        <MenuItem mnemonicParsing="false" text="Open…" />
+                        <Menu mnemonicParsing="false" text="Open Recent" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" text="Close" />
+                        <MenuItem mnemonicParsing="false" text="Save" />
+                        <MenuItem mnemonicParsing="false" text="Save As…" />
+                        <MenuItem mnemonicParsing="false" text="Revert" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" text="Preferences…" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" text="Quit" />
+                     </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Edit">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Undo" />
+                        <MenuItem mnemonicParsing="false" text="Redo" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" text="Cut" />
+                        <MenuItem mnemonicParsing="false" text="Copy" />
+                        <MenuItem mnemonicParsing="false" text="Paste" />
+                        <MenuItem mnemonicParsing="false" text="Delete" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" text="Select All" />
+                        <MenuItem mnemonicParsing="false" text="Unselect All" />
+                     </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Help">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
+                     </items>
+                  </Menu>
+               </menus>
+            </MenuBar>
+            <SplitPane dividerPositions="0.2061752988047809" prefHeight="430.0" prefWidth="1005.0">
+               <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="187.0" prefWidth="310.0">
+                     <children>
+                        <Text fill="#969191" layoutX="18.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PODAJ IMIĘ">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="nameField" layoutX="18.0" layoutY="53.0" />
+                        <Text fill="#969191" layoutX="18.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PODAJ NAZWISKO">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="lastNameField" layoutX="18.0" layoutY="94.0" />
+                        <Text fill="#969191" layoutX="18.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WYBIERZ FILM" textAlignment="JUSTIFY">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Text>
+                        <ComboBox fx:id="movieChooser" layoutX="18.0" layoutY="135.0" onAction="#movieChooseAction" prefWidth="150.0" />
+                        <ListView fx:id="showingChooseList" layoutX="18.0" layoutY="177.0" onMouseClicked="#setShowingAction" prefHeight="188.0" prefWidth="168.0" />
+                        <Text fill="#969191" layoutX="18.0" layoutY="173.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WYBIERZ SEANS" textAlignment="JUSTIFY">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Text>
+                        <Button fx:id="backButton" layoutX="5.0" layoutY="2.0" mnemonicParsing="false" onAction="#goBack" prefHeight="25.0" prefWidth="25.0" />
+                     </children>
+                  </AnchorPane>
+                  <SplitPane dividerPositions="0.8310991957104558" orientation="VERTICAL" prefHeight="375.0" prefWidth="640.0">
+                     <items>
+                      <AnchorPane fx:id="buttonsPane" minHeight="0.0" minWidth="0.0" prefHeight="187.0" prefWidth="800.0">
+                           <children>
+                              <Text fill="#969191" layoutX="8.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WYBIERZ MIEJSCE">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Text>
+                              <RadioButton fx:id="b101" graphicTextGap="2.0" layoutX="14.0" layoutY="47.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="101" textOverrun="CLIP" wrapText="true">
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="group" />
+                                 </toggleGroup></RadioButton>
+                              <RadioButton id="b102" fx:id="b102" layoutX="70.0" layoutY="47.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="102" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b103" fx:id="b103" layoutX="154.0" layoutY="47.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="103" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b104" fx:id="b104" layoutX="210.0" layoutY="47.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="104" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b105" fx:id="b105" layoutX="266.0" layoutY="47.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="105" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b109" fx:id="b109" layoutX="490.0" layoutY="47.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="109" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b111" fx:id="b111" layoutX="602.0" layoutY="47.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="111" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b108" fx:id="b108" layoutX="434.0" layoutY="47.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="108" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b107" fx:id="b107" layoutX="378.0" layoutY="47.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="107" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b106" fx:id="b106" layoutX="322.0" layoutY="47.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="106" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b110" fx:id="b110" layoutX="546.0" layoutY="47.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="110" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b201" fx:id="b201" layoutX="14.0" layoutY="77.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="201" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b212" fx:id="b212" layoutX="686.0" layoutY="77.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="212" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b213" fx:id="b213" layoutX="742.0" layoutY="77.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="213" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b112" fx:id="b112" layoutX="686.0" layoutY="47.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="112" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b113" fx:id="b113" layoutX="742.0" layoutY="47.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="113" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b211" fx:id="b211" layoutX="602.0" layoutY="77.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="211" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b210" fx:id="b210" layoutX="546.0" layoutY="77.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="210" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b209" fx:id="b209" layoutX="490.0" layoutY="77.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="209" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b208" fx:id="b208" layoutX="434.0" layoutY="77.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="208" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b207" fx:id="b207" layoutX="378.0" layoutY="77.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="207" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b206" fx:id="b206" layoutX="322.0" layoutY="77.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="206" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b205" fx:id="b205" layoutX="266.0" layoutY="77.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="205" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b204" fx:id="b204" layoutX="210.0" layoutY="77.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="204" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b203" fx:id="b203" layoutX="154.0" layoutY="77.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="203" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b202" fx:id="b202" layoutX="70.0" layoutY="77.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="202" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b301" fx:id="b301" graphicTextGap="2.0" layoutX="14.0" layoutY="107.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="301" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b302" fx:id="b302" layoutX="70.0" layoutY="107.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="302" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b303" fx:id="b303" layoutX="154.0" layoutY="107.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="303" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b304" fx:id="b304" layoutX="210.0" layoutY="107.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="304" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b305" fx:id="b305" layoutX="266.0" layoutY="107.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="305" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b309" fx:id="b309" layoutX="490.0" layoutY="107.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="309" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b311" fx:id="b311" layoutX="602.0" layoutY="107.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="311" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b308" fx:id="b308" layoutX="434.0" layoutY="107.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="308" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b307" fx:id="b307" layoutX="378.0" layoutY="107.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="307" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b306" fx:id="b306" layoutX="322.0" layoutY="107.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="306" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b310" fx:id="b310" layoutX="546.0" layoutY="107.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="310" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b401" fx:id="b401" layoutX="14.0" layoutY="137.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="401" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b412" fx:id="b412" layoutX="686.0" layoutY="137.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="412" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b413" fx:id="b413" layoutX="742.0" layoutY="137.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="413" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b312" fx:id="b312" layoutX="686.0" layoutY="107.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="312" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b313" fx:id="b313" layoutX="742.0" layoutY="107.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="313" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b411" fx:id="b411" layoutX="602.0" layoutY="137.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="411" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b410" fx:id="b410" layoutX="546.0" layoutY="137.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="410" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b409" fx:id="b409" layoutX="490.0" layoutY="137.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="409" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b408" fx:id="b408" layoutX="434.0" layoutY="137.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="408" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b407" fx:id="b407" layoutX="378.0" layoutY="137.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="407" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b406" fx:id="b406" layoutX="322.0" layoutY="137.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="406" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b405" fx:id="b405" layoutX="266.0" layoutY="137.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="405" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b404" fx:id="b404" layoutX="210.0" layoutY="137.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="404" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b403" fx:id="b403" layoutX="154.0" layoutY="137.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="403" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b402" fx:id="b402" layoutX="70.0" layoutY="137.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="402" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b501" fx:id="b501" graphicTextGap="2.0" layoutX="14.0" layoutY="167.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="501" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b502" fx:id="b502" layoutX="70.0" layoutY="167.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="502" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b503" fx:id="b503" layoutX="154.0" layoutY="167.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="503" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b504" fx:id="b504" layoutX="210.0" layoutY="167.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="504" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b505" fx:id="b505" layoutX="266.0" layoutY="167.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="505" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b509" fx:id="b509" layoutX="490.0" layoutY="167.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="509" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b511" fx:id="b511" layoutX="602.0" layoutY="167.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="511" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b508" fx:id="b508" layoutX="434.0" layoutY="167.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="508" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b507" fx:id="b507" layoutX="378.0" layoutY="167.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="507" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b506" fx:id="b506" layoutX="322.0" layoutY="167.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="506" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b510" fx:id="b510" layoutX="546.0" layoutY="167.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="510" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b601" fx:id="b601" layoutX="14.0" layoutY="197.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="601" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b612" fx:id="b612" layoutX="686.0" layoutY="197.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="612" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b613" fx:id="b613" layoutX="742.0" layoutY="197.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="613" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b512" fx:id="b512" layoutX="686.0" layoutY="167.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="512" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b513" fx:id="b513" layoutX="742.0" layoutY="167.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="513" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b611" fx:id="b611" layoutX="602.0" layoutY="197.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="611" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b610" fx:id="b610" layoutX="546.0" layoutY="197.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="610" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b609" fx:id="b609" layoutX="490.0" layoutY="197.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="609" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b608" fx:id="b608" layoutX="434.0" layoutY="197.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="608" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b607" fx:id="b607" layoutX="378.0" layoutY="197.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="607" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b606" fx:id="b606" layoutX="322.0" layoutY="197.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="606" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b605" fx:id="b605" layoutX="266.0" layoutY="197.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="605" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b604" fx:id="b604" layoutX="210.0" layoutY="197.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="604" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b603" fx:id="b603" layoutX="154.0" layoutY="197.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="603" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b602" fx:id="b602" layoutX="70.0" layoutY="197.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="602" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b701" fx:id="b701" layoutX="14.0" layoutY="227.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="701" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b712" fx:id="b712" layoutX="686.0" layoutY="227.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="712" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b713" fx:id="b713" layoutX="742.0" layoutY="227.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="713" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b711" fx:id="b711" layoutX="602.0" layoutY="227.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="711" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b710" fx:id="b710" layoutX="546.0" layoutY="227.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="710" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b709" fx:id="b709" layoutX="490.0" layoutY="227.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="709" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b708" fx:id="b708" layoutX="434.0" layoutY="227.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="708" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b707" fx:id="b707" layoutX="378.0" layoutY="227.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="707" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b706" fx:id="b706" layoutX="322.0" layoutY="227.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="706" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b705" fx:id="b705" layoutX="266.0" layoutY="227.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="705" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b704" fx:id="b704" layoutX="210.0" layoutY="227.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="704" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b703" fx:id="b703" layoutX="154.0" layoutY="227.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="703" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b702" fx:id="b702" layoutX="70.0" layoutY="227.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="702" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b801" fx:id="b801" layoutX="14.0" layoutY="257.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="801" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b812" fx:id="b812" layoutX="686.0" layoutY="257.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="812" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b813" fx:id="b813" layoutX="742.0" layoutY="257.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="813" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b811" fx:id="b811" layoutX="602.0" layoutY="257.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="811" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b810" fx:id="b810" layoutX="546.0" layoutY="257.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="810" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b809" fx:id="b809" layoutX="490.0" layoutY="257.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="809" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b808" fx:id="b808" layoutX="434.0" layoutY="257.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="808" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b807" fx:id="b807" layoutX="378.0" layoutY="257.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="807" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b806" fx:id="b806" layoutX="322.0" layoutY="257.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="806" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b805" fx:id="b805" layoutX="266.0" layoutY="257.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="805" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b804" fx:id="b804" layoutX="210.0" layoutY="257.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="804" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b803" fx:id="b803" layoutX="154.0" layoutY="257.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="803" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <RadioButton id="b802" fx:id="b802" layoutX="70.0" layoutY="257.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="802" textOverrun="CLIP" toggleGroup="$group" wrapText="true" />
+                              <Text fill="#969191" layoutX="371.0" layoutY="306.0" strokeType="OUTSIDE" strokeWidth="0.0" text="EKRAN">
+                                 <font>
+                                    <Font name="System Bold" size="17.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="119.0" prefWidth="786.0">
+                           <children>
+                              <Button fx:id="reserveButton" layoutX="84.0" layoutY="13.0" mnemonicParsing="false" onAction="#reserveAction" prefHeight="34.0" prefWidth="627.0" text="ZAREZERWU" />
+                           </children>
+                        </AnchorPane>
+                     </items>
+                  </SplitPane>
+               </items>
+            </SplitPane>
+        </children>
+      </VBox>
+   </content>
+</ScrollPane>

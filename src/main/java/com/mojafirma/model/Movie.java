@@ -1,18 +1,23 @@
 package com.mojafirma.model;
 
+import org.hibernate.annotations.*;
+
 import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.time.LocalDate;
 import java.util.List;
 
 @Entity
-@Table( name = "movie" )
+@Table(name = "movie")
 public class Movie {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int movie_id;
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL,
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE,
             mappedBy = "movie", orphanRemoval = true)
     @Column(name = "SHOWING", nullable = false)
     private List<Showing> showings;

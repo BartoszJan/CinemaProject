@@ -23,7 +23,7 @@ public class Showing {
     @Column(name = "room_number")
     private int room_number;
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL,
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE,
             mappedBy = "showing", orphanRemoval = true)
     @Column(name = "TICKET", nullable = false)
     private List<Ticket> tickets;
