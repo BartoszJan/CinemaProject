@@ -1,5 +1,4 @@
 # CinemaProject
-Cinema Service
 This aplication simulates working of cinema service. Is based on Java
 Application includes functions of adding and presents movies, seances and also buying tickets for customers.
 Data is stored in MySQL database. Spring provide conection with databes.
